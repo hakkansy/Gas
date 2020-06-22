@@ -5,52 +5,63 @@
  */
 package uas.View;
 
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import uas.Controller.MahasiswaController;
+import uas.Controller.ProdiController;
 
 /**
  *
  * @author User
  */
-public class FormMahasiswa extends javax.swing.JFrame {
+public class FormProdi extends javax.swing.JFrame {
 
     /**
      * Creates new form mahasiswaView
      */
-    MahasiswaController mahasiswaController;
-    public FormMahasiswa() {
+    ProdiController prodiController;
+    public FormProdi() {
         initComponents();
-        mahasiswaController = new MahasiswaController(this);
-        mahasiswaController.clear();
-        mahasiswaController.isiTabelMahasiswa();
+        prodiController = new ProdiController(this);
+        prodiController.clear();
+        prodiController.isiTabelProdi();                
     }
 
-    public JTable getTabelMahasiswa() {
-        return tabelMahasiswa;
-    }    
-
-    public JTextField getTxtnama() {
-        return txtnama;
+    public JTable getTabelProdi() {
+        return tabelProdi;
     }
 
-    public JTextField getTxtnoBP() {
-        return txtnoBP;
+    public void setTabelProdi(JTable tabelProdi) {
+        this.tabelProdi = tabelProdi;
     }
 
-    public JTextField getTxtnoTelp() {
-        return txtnoTelp;
+    public JTextField getTxtkdProdi() {
+        return txtkdProdi;
     }
 
-    public JTextField getTxttempatLahir() {
-        return txttempatLahir;
+    public void setTxtkdProdi(JTextField txtkdProdi) {
+        this.txtkdProdi = txtkdProdi;
     }
 
-    public JTextField getTxttglLahir() {
-        return txttglLahir;
+    public JComboBox getComJurusan() {
+        return comJurusan;
+    }
+
+    public void setComJurusan(JComboBox comJurusan) {
+        this.comJurusan = comJurusan;
+    }
+
+    public JComboBox getComprodi() {
+        return comprodi;
+    }
+
+    public void setComprodi(JComboBox comprodi) {
+        this.comprodi = comprodi;
     }
     
     
+
     
     
 
@@ -68,21 +79,17 @@ public class FormMahasiswa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtnama = new javax.swing.JTextField();
-        txtnoBP = new javax.swing.JTextField();
-        txttempatLahir = new javax.swing.JTextField();
-        txttglLahir = new javax.swing.JTextField();
-        txtnoTelp = new javax.swing.JTextField();
+        txtkdProdi = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelMahasiswa = new javax.swing.JTable();
+        tabelProdi = new javax.swing.JTable();
         butupdate = new javax.swing.JButton();
         butinsert = new javax.swing.JButton();
         butdelete = new javax.swing.JButton();
         butexit = new javax.swing.JButton();
         butclear = new javax.swing.JButton();
+        comprodi = new javax.swing.JComboBox();
+        comJurusan = new javax.swing.JComboBox();
 
         jButton5.setText("jButton1");
 
@@ -90,36 +97,32 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Tabel Mahasiswa");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setText("Tabel Prodi");
 
-        jLabel2.setText("No BP");
+        jLabel2.setText("Kode Prodi");
 
-        jLabel3.setText("Nama");
+        jLabel3.setText("Prodi");
 
-        jLabel4.setText("Tanggal Lahir");
+        jLabel5.setText("Jurusan");
 
-        jLabel5.setText("Tempat Lahir");
-
-        jLabel6.setText("No Telepon");
-
-        tabelMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
+        tabelProdi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "No BP", "Nama", "Tempat Lahir", "Tanggal Lahir", "No Telepon"
+                "Kode Prodi", "Prodi", "Jurusan"
             }
         ));
-        tabelMahasiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelProdi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelMahasiswaMouseClicked(evt);
+                tabelProdiMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelMahasiswa);
+        jScrollPane1.setViewportView(tabelProdi);
 
         butupdate.setText("Update");
         butupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -156,46 +159,46 @@ public class FormMahasiswa extends javax.swing.JFrame {
             }
         });
 
+        comprodi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "D-III Administrasi Bisnis\t", "D-III Akuntansi\t", "D-III Bahasa Inggris\t", "D-III Manajemen Informatika", "D-III Teknik Alat Berat\t", "D-III Teknik Elektronika\t", "D-III Teknik Komputer\t", "D-III Teknik Listrik", "D-III Teknik Mesin\t", "D-III Teknik Sipil\t", "D-III Teknik Telekomunikasi", "D-III Usaha Perjalanan Wisata", "D-IV Akuntansi\t", "D-IV Teknik Elektronika\t", "D-IV Manajemen Rekayasa Konstruksi\t", "D-IV Perencanaan Jalan Dan Jembatan\t", "D-IV Teknik Manufaktur\t", "D-IV Teknik Perencanaan Irigasi Dan Rawa", "D-IV Teknik Telekomunikasi", "D-IV Teknologi Rekayasa Perangkat Lunak", "D-IV Teknologi Rekayasa Instalasi Listrik" }));
+
+        comJurusan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrasi Niaga ", "Akuntansi", "Bahasa Inggris", "Teknik Elektro", "Teknik Mesin", "Teknik Sipil", "Teknologi Informasi" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)))
-                            .addComponent(jLabel2))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtnama)
-                            .addComponent(txttempatLahir)
-                            .addComponent(txttglLahir)
-                            .addComponent(txtnoTelp)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtnoBP, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(22, 22, 22)
                         .addComponent(butinsert)
                         .addGap(18, 18, 18)
                         .addComponent(butupdate)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(butdelete)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(butclear)
-                        .addGap(18, 18, 18)
-                        .addComponent(butexit)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(butexit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addGap(53, 53, 53)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(27, 27, 27)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comprodi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comJurusan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtkdProdi))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,38 +206,28 @@ public class FormMahasiswa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtnoBP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtkdProdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txttempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txttglLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtnoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(comprodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(comJurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butupdate)
                     .addComponent(butinsert)
                     .addComponent(butdelete)
-                    .addComponent(butexit)
-                    .addComponent(butupdate)
-                    .addComponent(butclear))
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(butclear)
+                    .addComponent(butexit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -242,25 +235,26 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
     private void butinsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butinsertActionPerformed
         // TODO add your handling code here:
-        mahasiswaController.insert();
-        mahasiswaController.isiTabelMahasiswa();
+        prodiController.insert();
+        prodiController.isiTabelProdi();
+        
     }//GEN-LAST:event_butinsertActionPerformed
 
     private void butupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butupdateActionPerformed
         // TODO add your handling code here:
-        mahasiswaController.update();
-        mahasiswaController.isiTabelMahasiswa();
+        prodiController.update();
+        prodiController.isiTabelProdi();        
     }//GEN-LAST:event_butupdateActionPerformed
 
     private void butdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butdeleteActionPerformed
         // TODO add your handling code here:
-        mahasiswaController.delete();
-        mahasiswaController.isiTabelMahasiswa();
+        prodiController.delete();
+        prodiController.isiTabelProdi();        
     }//GEN-LAST:event_butdeleteActionPerformed
 
     private void butclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butclearActionPerformed
         // TODO add your handling code here:
-        mahasiswaController.clear();
+        prodiController.clear();
     }//GEN-LAST:event_butclearActionPerformed
 
     private void butexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butexitActionPerformed
@@ -268,10 +262,10 @@ public class FormMahasiswa extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_butexitActionPerformed
 
-    private void tabelMahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMahasiswaMouseClicked
+    private void tabelProdiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelProdiMouseClicked
         // TODO add your handling code here:
-        mahasiswaController.onMouseClickTabelMahasiswa();
-    }//GEN-LAST:event_tabelMahasiswaMouseClicked
+        prodiController.onMouseClickTabelProdi();
+    }//GEN-LAST:event_tabelProdiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,14 +284,18 @@ public class FormMahasiswa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormProdi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -306,7 +304,7 @@ public class FormMahasiswa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormMahasiswa().setVisible(true);
+                new FormProdi().setVisible(true);
             }
         });
     }
@@ -317,20 +315,16 @@ public class FormMahasiswa extends javax.swing.JFrame {
     private javax.swing.JButton butexit;
     private javax.swing.JButton butinsert;
     private javax.swing.JButton butupdate;
+    private javax.swing.JComboBox comJurusan;
+    private javax.swing.JComboBox comprodi;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelMahasiswa;
-    private javax.swing.JTextField txtnama;
-    private javax.swing.JTextField txtnoBP;
-    private javax.swing.JTextField txtnoTelp;
-    private javax.swing.JTextField txttempatLahir;
-    private javax.swing.JTextField txttglLahir;
+    private javax.swing.JTable tabelProdi;
+    private javax.swing.JTextField txtkdProdi;
     // End of variables declaration//GEN-END:variables
 }

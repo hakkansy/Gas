@@ -95,16 +95,12 @@ public class MahasiswaController {
     }
     
     public void onMouseClickTabelMahasiswa(){
-        MahasiswaDao mahasiswaDao = new MahasiswaDao();
+        mahasiswaDao = new MahasiswaDao();
         
-        String noBP = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 0).toString();
-        String nama = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 1).toString();
-        String tempatLahir = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 2).toString();
-        String tglLahir = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 3).toString();
-        String noTelp = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 4).toString();
+        String noBP = view.getTabelMahasiswa().getValueAt(view.getTabelMahasiswa().getSelectedRow(), 0).toString();        
         
         try{
-            MahasiswaModel mahasiswaModel = mahasiswaDao.getMahasiswa(noBP);
+            mahasiswa = mahasiswaDao.getMahasiswa(noBP);
             view.getTxtnoBP().setText(mahasiswa.getNoBP());
             view.getTxtnama().setText(mahasiswa.getNama());
             view.getTxttempatLahir().setText(mahasiswa.getTempatLahir());

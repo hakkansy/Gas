@@ -72,5 +72,17 @@ public class MahasiswaDao {
         return mahasiswa;
     }
     
+    public String[] getNama(String noBP) throws SQLException{
+        String sql = "select nama from mahasiswa where noBP=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, noBP);
+        String nama = null;
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            nama = rs.getString(1);
+        }
+        return null;
+    }
+    
     
 }

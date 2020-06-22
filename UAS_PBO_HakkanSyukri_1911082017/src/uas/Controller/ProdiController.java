@@ -90,7 +90,7 @@ public class ProdiController {
        prodiDao = new ProdiDao();
        String kdProdi = view.getTabelProdi().getValueAt(view.getTabelProdi().getSelectedRow(), 0).toString();
        try{
-           prodi = prodiDao.getpProdi(kdProdi);
+           prodi = prodiDao.getProdi(kdProdi);
            view.getTxtkdProdi().setText(prodi.getKdProdi());          
        }
        catch(SQLException ex){

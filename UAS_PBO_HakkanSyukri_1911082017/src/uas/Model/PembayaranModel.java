@@ -15,7 +15,7 @@ public class PembayaranModel {
     public String kdProdi;
     public String gol;
     public String semester;
-    public double total;
+    public String total;
     public String tglPembayaran;
 
     public String getKdPembayaran() {
@@ -57,17 +57,17 @@ public class PembayaranModel {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    
-    
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
-
+    
+    
+    
     public String getTglPembayaran() {
         return tglPembayaran;
     }

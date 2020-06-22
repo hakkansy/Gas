@@ -53,25 +53,22 @@ public class PembayaranController {
         }     
     }
     
-    public void insert(){
-        String kdPembayaran = view.getTxtKdPembayaran().getText();
-        String noBP = view.getTxtnoBP().getText();
-        String kdProdi = view.getTxtkdProdi().getText();
-        
+    public void insert(){        
         pembayaran = new PembayaranModel();
+        
         pembayaran.setKdPembayaran(view.getTxtKdPembayaran().getText());
-        pembayaran.setNoBP(view.getTxtnama().getText());
-        pembayaran.setKdProdi(view.getTxtprodi().getText());
+        pembayaran.setNoBP(view.getTxtnoBP().getText());
+        pembayaran.setKdProdi(view.getTxtkdProdi().getText());
         pembayaran.setSemester((String) view.getComsemester().getSelectedItem());
         pembayaran.setGol((String) view.getComgolongan().getSelectedItem());
-        pembayaran.setTotal(Double.parseDouble(view.getTxttotal().getText()));
+        pembayaran.setTotal(view.getTxttotal().getText());
         pembayaran.setTglPembayaran(view.getTxttglPembayaran().getText());
         
         try{
             pembayaranDao.create(pembayaran);
-            pembayaranDao.delete(kdPembayaran, noBP, kdProdi);
-        } catch (SQLException ex) {
-            Logger.getLogger(PembayaranController.class.getName()).log(Level.SEVERE, null, ex);
+            javax.swing.JOptionPane.showMessageDialog(null, "Insert OK");
+        } catch (Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(view, "Error" +ex.getMessage());
         }
     }
     
@@ -82,10 +79,13 @@ public class PembayaranController {
         try{
             pembayaranDao.delete(kdPembayaran, noBP, kdProdi);
             DefaultTableModel model = (DefaultTableModel) view.getTabelPembayaran().getModel();
-            
+            model.setRowCount(0);
+            isiTable();
+            JOptionPane.showMessageDialog(view, "Delete Success");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(view, ex);
         }
+        this.clear();
     }
     
     public void clear(){
@@ -112,8 +112,7 @@ public class PembayaranController {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getDouble(7),
-                    rs.getString(8),
+                    rs.getDouble(7)
                 };
                 model.addRow(data);
             }    
@@ -141,7 +140,7 @@ public class PembayaranController {
     public void onKeyPressedKdProdi(){
         try{
             ProdiDao prodiDao = new ProdiDao();
-            ProdiModel prodi = prodiDao.getpProdi(view.getTxtkdProdi().getText());
+            ProdiModel prodi = prodiDao.getProdi(view.getTxtkdProdi().getText());
             if(prodi != null){
                 view.getTxtprodi().setText(prodi.getProdi());
                 view.getTxtjurusan().setText(prodi.getJurusan());

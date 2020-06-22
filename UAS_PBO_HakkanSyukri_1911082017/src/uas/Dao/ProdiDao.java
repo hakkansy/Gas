@@ -50,7 +50,7 @@ public class ProdiDao {
         ps.executeUpdate();
     }
     
-    public ProdiModel getpProdi(String kdProdi) throws SQLException{
+    public ProdiModel getProdi(String kdProdi) throws SQLException{
         String sql = "select*from prodi where kdProdi=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, kdProdi);
@@ -63,5 +63,19 @@ public class ProdiDao {
             prodi.setJurusan(rs.getString(3));
         }
         return prodi;
+    }
+    
+    public String[] getJurusanProdi(String kdProdi) throws SQLException{
+        String sql = "select prodi, jurusan from prodi where kdProdi=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, kdProdi);
+        String prodi = null;
+        String jurusan = null;
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            prodi = rs.getString(1);
+            jurusan = rs.getString(2);
+        }
+        return null;
     }
 }

@@ -30,25 +30,25 @@ public class PembayaranDao {
         ps.setString(1, pembayaran.getKdPembayaran());
         ps.setString(2, pembayaran.getNoBP());
         ps.setString(3, pembayaran.getKdProdi());
-        ps.setString(4, pembayaran.getGol());
-        ps.setString(5, pembayaran.getSemester());
-        ps.setDouble(6, pembayaran.getTotal());
+        ps.setString(4, pembayaran.getSemester());
+        ps.setString(5, pembayaran.getGol());
+        ps.setString(6, pembayaran.getTotal());
         ps.setString(7, pembayaran.getTglPembayaran());        
         ps.executeUpdate();
     }
     
     public void update(PembayaranModel pembayaran) throws SQLException{
-        String sql ="update pembayaran set gol=?, semester=?, total=?,"
+        String sql ="update pembayaran set semester=?,gol=?, total=?,"
                 + "tglPembayaran=? where kdPembayaran=? and noBP=? and "
                 + "kdProdi=? ";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, pembayaran.getGol());
-        ps.setString(2, pembayaran.getSemester());
-        ps.setDouble(3, pembayaran.getTotal());
-        ps.setString(4, pembayaran.getTglPembayaran());
-        ps.setString(5, pembayaran.getKdPembayaran());
-        ps.setString(6, pembayaran.getNoBP());
-        ps.setString(7, pembayaran.getKdProdi());
+        ps.setString(1, pembayaran.getKdPembayaran());
+        ps.setString(2, pembayaran.getNoBP());
+        ps.setString(3, pembayaran.getKdProdi());
+        ps.setString(4, pembayaran.getSemester());
+        ps.setString(5, pembayaran.getGol());
+        ps.setString(6, pembayaran.getTotal());
+        ps.setString(7, pembayaran.getTglPembayaran());        
         ps.executeUpdate();
     }
     
@@ -75,12 +75,12 @@ public class PembayaranDao {
             pembayaran = new PembayaranModel();
             pembayaran.setKdPembayaran(rs.getString(1));
             pembayaran.setNoBP(rs.getString(2));
-            pembayaran.setKdProdi(rs.getString(3));
-            pembayaran.setGol(rs.getString(4));
-            pembayaran.setSemester(rs.getString(5));
-            pembayaran.setTglPembayaran(rs.getString(6));
-            pembayaran.setTotal(rs.getDouble(7));
+            pembayaran.setKdProdi(rs.getString(3));            
+            pembayaran.setSemester(rs.getString(4));
+            pembayaran.setGol(rs.getString(5));
+            pembayaran.setTotal(rs.getString(6));
+            pembayaran.setTglPembayaran(rs.getString(7));            
         }
         return pembayaran;
-    }
+    }            
 }

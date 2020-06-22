@@ -60,8 +60,8 @@ public class PembayaranController {
         
         pembayaran = new PembayaranModel();
         pembayaran.setKdPembayaran(view.getTxtKdPembayaran().getText());
-        pembayaran.setNoBP(view.getTxtnoBP().getText());
-        pembayaran.setKdProdi(view.getTxtkdProdi().getText());
+        pembayaran.setNoBP(view.getTxtnama().getText());
+        pembayaran.setKdProdi(view.getTxtprodi().getText());
         pembayaran.setSemester((String) view.getComsemester().getSelectedItem());
         pembayaran.setGol((String) view.getComgolongan().getSelectedItem());
         pembayaran.setTotal(Double.parseDouble(view.getTxttotal().getText()));
@@ -88,8 +88,9 @@ public class PembayaranController {
         }
     }
     
-    public void cancel(){
+    public void clear(){
         view.getTxtKdPembayaran().setText("");
+        view.getTxtnoBP().setText("");
         view.getTxtnama().setText("");
         view.getTxtkdProdi().setText("");
         view.getTxtprodi().setText("");
@@ -153,6 +154,33 @@ public class PembayaranController {
         catch(SQLException ex){
             Logger.getLogger(PembayaranController.class.getName()).log(Level.SEVERE, null, ex);
         }        
+    }
+    
+    public void getTotal(){
+        int indexGol = view.getComgolongan().getSelectedIndex();
+        switch(indexGol){
+            case 0:
+                view.getTxttotal().setText("Rp.500.000");
+                break;
+            case 1:
+                view.getTxttotal().setText("Rp.1.500.000");
+                break;
+            case 2:
+                view.getTxttotal().setText("Rp.2.500.000");
+                break;
+            case 3:
+                view.getTxttotal().setText("Rp.3.500.000");
+                break;
+            case 4:
+                view.getTxttotal().setText("Rp.4.500.000");
+                break;    
+            case 5:
+                view.getTxttotal().setText("Rp.5.500.000");
+                break;    
+            default :
+                JOptionPane.showMessageDialog(view, "Input Salah");
+                break;
+        }
     }
         
 }    
